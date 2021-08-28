@@ -1,0 +1,40 @@
+.weekly-table {
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+
+    &> * {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__col {
+    font-size: 20px;
+
+    &--name {
+      width: 30%;
+      font-size: 20px;
+      justify-content: flex-start;
+    }
+    &--icon {
+      width: 40%;
+    }
+    &--temp {
+      width: 30%;
+      color: $color-primary;
+      justify-content: flex-end;
+    }
+  }
+
+  &__icon {
+    width: 30px;
+    height: auto;
+  }
+}

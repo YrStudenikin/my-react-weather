@@ -1,0 +1,25 @@
+.header {
+  background: $color-white;
+  padding: 10px 0;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    color: #6495ed;
+    display: flex;
+    align-items: center;
+
+    &-img {
+      max-width: 80px;
+    }
+
+    &-title {
+      font-size: 22px;
+      font-weight: 500;
+      padding-left: 16px;
+    }
+  }
+}
