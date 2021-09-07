@@ -1,0 +1,3 @@
+export const SET_CURRENT = 'SET_CURRENT_WEATHER';
+export const SET_DAILY = 'SET_DAILY_WEATHER';
+export const SET_LOADED = 'SET_LOADED';

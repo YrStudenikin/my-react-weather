@@ -1,0 +1,37 @@
+{
+  "coord": {
+    "lon": 39.3078,
+    "lat": 48.574
+  },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "ясно",
+      "icon": "01d"
+    }
+  ],
+  "main": {
+    "temp": 302.68,
+    "feels_like": 301.11,
+    "temp_min": 302.68,
+    "temp_max": 302.68,
+    "pressure": 1013,
+    "humidity": 23,
+    "sea_level": 1013,
+    "grnd_level": 1005
+  },
+  "wind": {
+    "speed": 8.18,
+    "deg": 112,
+    "gust": 9.63
+  },
+  "clouds": {
+    "all": 0
+  },
+  "sys": {
+    "country": "UA",
+    "sunrise": 1630291035,
+    "sunset": 1630339801
+  }
+}

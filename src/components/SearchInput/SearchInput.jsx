@@ -8,6 +8,7 @@ import iconClose from "../../assets/images/close.svg";
 const SearchInput = () => {
     const [address, setAddress] = React.useState('');
     const [isTypedInput, setIsTypedInput] = React.useState(false);
+    const [error, setError] = React.useState('');
 
     React.useEffect(() => {
         modifyPlacesFunctions();
@@ -36,6 +37,7 @@ const SearchInput = () => {
         handleIsTypedInput(false);
         const results = await geocodeByAddress(value);
         const latLng = await getLatLng(results[0]);
+        console.log(latLng);
         setAddress(value);
     };
 
@@ -49,6 +51,13 @@ const SearchInput = () => {
         setIsTypedInput(false);
     }
 
+    const onError = (status, clearSuggestions) => {
+        clearSuggestions()
+        if (status === 'ZERO_RESULTS') {
+            setError('Результатов не найдено');
+        }
+    }
+
     return (
         <PlacesAutocomplete
             value={address}
@@ -57,6 +66,7 @@ const SearchInput = () => {
             debounce={400}
             ref={setPlacesRef}
             searchOptions={{types: ['(cities)']}}
+            onError={onError}
 
         >
             {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
@@ -69,19 +79,22 @@ const SearchInput = () => {
                             })}
                         />
                         <ul className={classNames('search-city__list', {'search-city__list--active': isTypedInput})}>
-                            {loading ? <li>...загрузка</li> : ''}
-                            {suggestions.map(suggestion => {
-                                const className = suggestion.active ? 'search-city__list-item--active' : '';
-                                return (
-                                    <li
-                                        key={suggestion.placeId}
-                                        {...getSuggestionItemProps(suggestion, {className})}
-                                    >
-                                        <span>{suggestion.formattedSuggestion.mainText}</span>
-                                        <span>{suggestion.formattedSuggestion.secondaryText}</span>
-                                    </li>
-                                );
-                            })}
+                            {loading ? <li>...Поиск</li> : ''}
+                            {suggestions.length
+                                ? suggestions.map(suggestion => {
+                                    const className = suggestion.active ? 'search-city__list-item--active' : '';
+                                    return (
+                                        <li
+                                            key={suggestion.placeId}
+                                            {...getSuggestionItemProps(suggestion, {className})}
+                                        >
+                                            <span>{suggestion.formattedSuggestion.mainText}</span>
+                                            <span>{suggestion.formattedSuggestion.secondaryText}</span>
+                                        </li>
+                                    );
+                                })
+                                : <li className="search-city__error">{error}</li>
+                            }
                         </ul>
 
                         {

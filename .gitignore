@@ -2,6 +2,8 @@
 
 /.idea
 
+/my-tests.js
+
 # dependencies
 /node_modules
 /.pnp
